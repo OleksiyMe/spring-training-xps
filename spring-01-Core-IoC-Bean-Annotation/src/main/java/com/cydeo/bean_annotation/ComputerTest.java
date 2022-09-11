@@ -23,6 +23,7 @@ public class ComputerTest {
 
         myPc.powerUp();
 
+        System.out.println(myPc);
 
     }
 }

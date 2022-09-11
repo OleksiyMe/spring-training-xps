@@ -17,6 +17,8 @@ public class ComputerConfig {
         return new SonyMonitor(  "25 inc Beast", "Sony", 25);
     }
 
+
+
     @Bean
     public Motherboard asusmotherboard(){
         return new AsusMotherboard("K50","Asus",4,3,"123bios");
