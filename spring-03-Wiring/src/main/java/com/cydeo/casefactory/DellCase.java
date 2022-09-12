@@ -2,12 +2,10 @@ package com.cydeo.casefactory;
 
 public class DellCase extends Case {
 
+    public DellCase(String model, String manufacturer, String powerSupply, Dimensions dimensions) {
 
-    public DellCase(String model, String manufacturer, String powerSupply, Dimentions dimentions) {
-        super(model, manufacturer, powerSupply, dimentions);
+        super(model, manufacturer, powerSupply,dimensions);
     }
-
-
 
     public void pressPowerButton() {
 

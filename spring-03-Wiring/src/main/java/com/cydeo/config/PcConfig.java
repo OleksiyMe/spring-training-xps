@@ -2,9 +2,8 @@ package com.cydeo.config;
 
 import com.cydeo.casefactory.Case;
 import com.cydeo.casefactory.DellCase;
-import com.cydeo.casefactory.Dimentions;
+import com.cydeo.casefactory.Dimensions;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -12,15 +11,15 @@ import org.springframework.context.annotation.Configuration;
 public class PcConfig {
 
     @Bean
-    public Dimentions dimentions(){
+    public Dimensions dimentions(){
 
-        return new Dimentions(10,20,30);
+        return new Dimensions(10,20,30);
     }
 
 
     @Bean
-    public Case caseDell(Dimentions dimentions){
-        return new DellCase("Dell", "Dell", "220", dimentions);
+    public Case caseDell(Dimensions dimensions){
+        return new DellCase("Dell", "Dell", "220", dimensions);
     }
 
 }
