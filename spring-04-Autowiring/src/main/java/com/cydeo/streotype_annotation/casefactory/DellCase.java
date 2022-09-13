@@ -9,7 +9,7 @@ public class DellCase extends Case {
 
     public void pressPowerButton() {
 
-        System.out.println("Power button pressed");
+        System.out.println("Power button pressed on Dell case");
     }
 
 }
