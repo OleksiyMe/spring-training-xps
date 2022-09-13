@@ -1,15 +1,14 @@
 package com.cydeo.streotype_annotation.casefactory;
 
-import lombok.Getter;
+public class DellCase extends Case {
 
-@Getter
-public class DellCase extends Case  {
+    public DellCase(String model, String manufacturer, String powerSupply, Dimensions dimensions) {
 
-    public DellCase() {
-        super("2208","Dell","240");
+        super(model, manufacturer, powerSupply,dimensions);
     }
 
     public void pressPowerButton() {
+
         System.out.println("Power button pressed");
     }
 
