@@ -15,20 +15,22 @@ public class CommentService {
     private final CommentNotificationProxy commentNotificationProxy;
 
     public CommentService(CommentRepository commentRepository,
+                          //       @Qualifier("emailCommentNotificationProxy") CommentNotificationProxy commentNotificationProxy) {
+                          //      @Qualifier("pushCommentNotificationProxy") CommentNotificationProxy commentNotificationProxy) {
+                          //      @Qualifier("EMAIL") CommentNotificationProxy commentNotificationProxy) {
                           @Qualifier("PUSH") CommentNotificationProxy commentNotificationProxy) {
+
         this.commentRepository = commentRepository;
         this.commentNotificationProxy = commentNotificationProxy;
     }
 
-    public void publishComment(Comment comment){
+    public void publishComment(Comment comment) {
 
-       //save in the DB
-       //send email
+        //save in the DB
+        //send email
 
         commentRepository.storeComment(comment);
         commentNotificationProxy.sentComment(comment);
-
-
 
 
     }
