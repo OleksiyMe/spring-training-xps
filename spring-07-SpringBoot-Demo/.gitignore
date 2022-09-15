@@ -1,3 +1,18 @@
+### By Cundullah ###
+### Cundullah — Today at 1:04 PM ###
+### You can add to git src folder and pom.xml ###
+### And rest of them you can add to .gitignore ###
+### You can use this .gitignore file for now: ###
+/target/
+/out/
+/.idea/
+*.iml
+/.mvn/
+mvnw.cmd
+mvnw
+
+
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
