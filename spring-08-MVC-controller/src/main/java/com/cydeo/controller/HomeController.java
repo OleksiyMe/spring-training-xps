@@ -14,15 +14,15 @@ public class HomeController {
     }
 
 
-    @RequestMapping("/login")
+    @RequestMapping({"/login", "/enter" })
     public String srg(){
         return "hereWeGo.html";  //end point amazon.com/login   (or register, or something)
 
     }
 
-    @RequestMapping()
+    @RequestMapping("/")
     public String asef(){
-        return "hereWeGo.html";  //end point amazon.com/login   (or register, or something)
+        return "index.html";  //end point amazon.com/login   (or register, or something)
 
     }
 
