@@ -1,6 +1,5 @@
 package com.cydeo.entity;
 
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,8 +12,8 @@ import java.math.BigDecimal;
 public class Location extends BaseEntity {
 
     private String name;
-    private BigDecimal lattitude;
-    private BigDecimal longtitude;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
     private String postalCode;
     private String country;
     private String state;
