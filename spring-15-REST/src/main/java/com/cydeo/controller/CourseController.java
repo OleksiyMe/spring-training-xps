@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 //@Controller
-@RequestMapping("/courses")
+@RequestMapping("/courses/api/v1")
 public class CourseController {
 
 
@@ -58,16 +58,25 @@ public class CourseController {
 
     }
 
+    @PutMapping("{id}")
+    //   @ResponseBody
+    public void updateCourse (@PathVariable("id") Long courseID,@RequestBody CourseDTO course){
+
+        courseService.updateCourse(courseID,course);
+
+    }
+
+    @DeleteMapping("{id}")
+    //   @ResponseBody
+    public void deleteCourseById (@PathVariable("id") Long id){
+
+        courseService.deleteCourseById(id);
+
+    }
 
 
 
- /*   @PostMapping
-  //  @ResponseBody
-    public void createCourse() (){
 
-        return "view";
-
-    }*/
 
 
 }
