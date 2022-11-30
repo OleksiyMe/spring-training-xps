@@ -13,50 +13,50 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "requestDTO",
-    "locationDTO",
-    "currentDTO"
+    "request",
+    "location",
+    "current"
 })
 @Generated("jsonschema2pojo")
 public class WeatherDTO {
 
-    @JsonProperty("requestDTO")
-    private RequestDTO requestDTO;
-    @JsonProperty("locationDTO")
-    private LocationDTO locationDTO;
-    @JsonProperty("currentDTO")
-    private CurrentDTO currentDTO;
+    @JsonProperty("request")
+    private RequestDTO request;
+    @JsonProperty("location")
+    private LocationDTO location;
+    @JsonProperty("current")
+    private CurrentDTO current;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("requestDTO")
+    @JsonProperty("request")
     public RequestDTO getRequest() {
-        return requestDTO;
+        return request;
     }
 
-    @JsonProperty("requestDTO")
-    public void setRequest(RequestDTO requestDTO) {
-        this.requestDTO = requestDTO;
+    @JsonProperty("request")
+    public void setRequest(RequestDTO request) {
+        this.request = request;
     }
 
-    @JsonProperty("locationDTO")
+    @JsonProperty("location")
     public LocationDTO getLocation() {
-        return locationDTO;
+        return location;
     }
 
-    @JsonProperty("locationDTO")
-    public void setLocation(LocationDTO locationDTO) {
-        this.locationDTO = locationDTO;
+    @JsonProperty("location")
+    public void setLocation(LocationDTO location) {
+        this.location = location;
     }
 
-    @JsonProperty("currentDTO")
+    @JsonProperty("current")
     public CurrentDTO getCurrent() {
-        return currentDTO;
+        return current;
     }
 
-    @JsonProperty("currentDTO")
-    public void setCurrent(CurrentDTO currentDTO) {
-        this.currentDTO = currentDTO;
+    @JsonProperty("current")
+    public void setCurrent(CurrentDTO current) {
+        this.current = current;
     }
 
     @JsonAnyGetter

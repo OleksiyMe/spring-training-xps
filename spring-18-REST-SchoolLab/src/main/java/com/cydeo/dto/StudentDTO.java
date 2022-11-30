@@ -17,7 +17,6 @@ import java.time.LocalDate;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class StudentDTO {
 
-
     @JsonIgnore
     private Long id;
 
@@ -35,8 +34,7 @@ public class StudentDTO {
 
     private Status status;
 
-
-    @JsonManagedReference(value = "student-address-reference")
+    @JsonManagedReference(value = "student-address-reference")           // defaultReference
     private AddressDTO address;
 
     private ParentDTO parent;
