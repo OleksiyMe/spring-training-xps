@@ -37,16 +37,58 @@ public class LoggingAspect {
 //        logger.info("Info log ...........");
 //    }
 
-  @Pointcut("execution(* com.cydeo.repository.CourseRepository.findById(*))")
-    public void courseRepositoryFindByIdPC(){}
+//  @Pointcut("execution(* com.cydeo.repository.CourseRepository.findById(*))")
+//    public void courseRepositoryFindByIdPC(){}
+//
+//    @Before("courseRepositoryFindByIdPC()")
+//    public void beforeCourseRepositoryFindById(JoinPoint joinPoint){
+//
+//      //working with info, we can modify output
+//      logger.info("Before-> Method: {}, Arguments {}, Target {}",
+//              joinPoint.getSignature(),joinPoint.getArgs(), joinPoint.getTarget()
+//      );
+//    }
+//
 
-    @Before("courseRepositoryFindByIdPC()")
-    public void beforeCourseRepositoryFindById(JoinPoint joinPoint){
+//    @Pointcut("within(com.cydeo.controller..*)")
+//    public void  anyControllerOperation(){}
+//
+//    @Pointcut("@within(org.springframework.stereotype.Service)")
+//    public void anyServiceOperation(){}
+//
+//@Before("anyControllerOperation() || anyServiceOperation()")
+//    public void beforeControllerOrServiceAdvice(JoinPoint joinPoint){
+//
+//      //working with info, we can modify output
+//      logger.info("Before-> Method: {}, Arguments {}, Target {}",
+//              joinPoint.getSignature(),joinPoint.getArgs(), joinPoint.getTarget()
+//      );
+//}
 
-      //working with info, we can modify output
-      logger.info("Before-> Method: {}, Arguments {}, Target {}",
-              joinPoint.getSignature(),joinPoint.getArgs(), joinPoint.getTarget()
-      );
+
+//    @Pointcut("@annotation(org.springframework.web.bind.annotation.DeleteMapping)")
+//    public void anyDeleteControllerOperation() {
+//    }
+//
+//    @Before("anyDeleteControllerOperation()")
+//    public void beforeDeleteMappingAnnotation(JoinPoint joinPoint) {
+//        //working with info, we can modify output
+//        logger.info("Before-> Method: {}, Arguments {}, Target {}",
+//                joinPoint.getSignature(), joinPoint.getArgs(), joinPoint.getTarget()
+//        );
+//    }
+
+
+    @Pointcut("@annotation(com.cydeo.annotation.LoggingAnnotation)")
+    public void loggingAnnotationPointcut() {
+    }
+
+    @Before("loggingAnnotationPointcut()")
+    public void beforeLoggingAnnotation(JoinPoint joinPoint) {
+        //working with info, we can modify output
+        logger.info("Before-> Method: {}, Arguments {}, Target {}",
+                joinPoint.getSignature(), joinPoint.getArgs(), joinPoint.getTarget()
+        );
     }
 
 
