@@ -4,6 +4,7 @@ package com.cydeo.controller;
 import com.cydeo.dto.CourseDTO;
 
 import com.cydeo.service.CourseService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,11 +35,11 @@ public class CourseController {
 
     @GetMapping("{id}")
     //   @ResponseBody
-    public CourseDTO getCourseById (@PathVariable("id") Long id){
+    public CourseDTO getCourseById (@PathVariable("id") Long courseId){
 
         // return all courses
 
-        return courseService.getCourseById(id);
+        return courseService.getCourseById(courseId);
 
     }
 
@@ -47,7 +48,7 @@ public class CourseController {
     public List<CourseDTO> getCourseById (@PathVariable("category") String category){
 
         return courseService.getCoursesByCategory(category);
-
+        
     }
 
     @PostMapping()
