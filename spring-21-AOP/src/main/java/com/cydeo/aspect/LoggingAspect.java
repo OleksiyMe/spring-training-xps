@@ -1,13 +1,15 @@
 package com.cydeo.aspect;
 
 
+import com.cydeo.dto.CourseDTO;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Aspect
 @Component
@@ -79,18 +81,68 @@ public class LoggingAspect {
 //    }
 
 
+//    @Pointcut("@annotation(com.cydeo.annotation.LoggingAnnotation)")
+//    public void loggingAnnotationPointcut() {
+//    }
+//
+//    @Before("loggingAnnotationPointcut()")
+//    public void beforeLoggingAnnotation(JoinPoint joinPoint) {
+//        //working with info, we can modify output
+//        logger.info("Before-> Method: {}, Arguments {}, Target {}",
+//                joinPoint.getSignature(), joinPoint.getArgs(), joinPoint.getTarget()
+//        );
+//    }
+
+//    @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
+//    public void afterReturningGetMappingAnnotation() {
+//    }
+
+//    @AfterReturning(pointcut="afterReturningGetMappingAnnotation()", returning = "result")
+//    public void afterReturningGetMappingOperation(JoinPoint joinPoint, Object result){
+//        logger.info("After Returning-> Method: {}, Result: {}",
+//                joinPoint.getSignature(), result.toString());
+//
+//    }
+
+//    @AfterReturning(pointcut = "afterReturningGetMappingAnnotation()", returning = "results")
+//    // CourseDTO -> Object   -- this is ok
+//    //List<CourseDTO> -> List<Object>  --- U CAN NOT DO THIS for generic classes
+//    public void afterReturningGetMappingOperation(JoinPoint joinPoint, List<CourseDTO> results) {
+//        logger.info("After Returning-> Method: {}, Results: {}",
+//                joinPoint.getSignature(), results.toString());
+//
+//    }
+
+
+//    @AfterThrowing(pointcut = "afterReturningGetMappingAnnotation()", throwing = "exception")
+//    public void afterThrowingGetMappingOperation(JoinPoint joinPoint, RuntimeException exception) {
+//        logger.error("After Throwing -> Method: {}, Exception: {}", joinPoint.getSignature().toShortString(),
+//                exception.getMessage());
+//    }
+
+
     @Pointcut("@annotation(com.cydeo.annotation.LoggingAnnotation)")
     public void loggingAnnotationPointcut() {
     }
 
-    @Before("loggingAnnotationPointcut()")
-    public void beforeLoggingAnnotation(JoinPoint joinPoint) {
-        //working with info, we can modify output
-        logger.info("Before-> Method: {}, Arguments {}, Target {}",
-                joinPoint.getSignature(), joinPoint.getArgs(), joinPoint.getTarget()
-        );
-    }
+    @Around("loggingAnnotationPointcut()")
+    public Object anyLoggingAnnotationOperation(ProceedingJoinPoint proceedingJoinPoint) {
 
+        logger.info("Before -> Method: {} - Parameter {}",
+                proceedingJoinPoint.getSignature().toShortString(), proceedingJoinPoint.getArgs()
+
+        );
+        Object result = null;
+
+        try {
+            result = proceedingJoinPoint.proceed();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+        logger.info("After -> Method: {} - Result: {}", proceedingJoinPoint.getSignature(),
+                result.toString());
+        return result;
+    }
 
 }
 

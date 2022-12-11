@@ -3,6 +3,7 @@ package com.cydeo.controller;
 import com.cydeo.annotation.LoggingAnnotation;
 import com.cydeo.dto.CourseDTO;
 import com.cydeo.service.CourseService;
+import org.modelmapper.internal.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,10 @@ public class CourseController {
     }
 
     @GetMapping
-    public List<CourseDTO> getAllCourses() {
+    public List<CourseDTO> getAllCourses() throws Exception {
+
+     //  throw new Exception("11111111111");
+
         List<CourseDTO> list = courseService.getCourses();
         return list;
     }
